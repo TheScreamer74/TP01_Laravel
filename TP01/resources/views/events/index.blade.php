@@ -8,7 +8,7 @@
     <title>Events</title>
 </head>
 <body>
-    <h1>{{ count($events) }} Events</h1>
+    <h1>{{ $events->count() }} Events</h1>
 
     @foreach($events as $event)
         <article>
@@ -17,7 +17,9 @@
             <p>{{ $event->prince }}</p>
             <p>Lieu : {{ $event->location }}</p>
         </article>
-        <hr>
+        @if(! $loop->last)
+            <hr>
+        @endif
     @endforeach
 </body>
 </html>
