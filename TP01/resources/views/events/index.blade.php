@@ -18,5 +18,6 @@
             <p>Lieu : {{ $event->location }}</p>
         </article>
         <hr>
+    @endforeach
 </body>
 </html>
