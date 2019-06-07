@@ -14,7 +14,7 @@ class EventsHelper{
     }
 
 
-    public static function formatPate($date){
+    public static function formatDate($date){
         return $date->format('d/m/Y H:i');
     }
 
