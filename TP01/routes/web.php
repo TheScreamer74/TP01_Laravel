@@ -17,10 +17,10 @@
 Route::get('/', function () {
 
     App\Event::create([
-        'name' => 'Damage Germany',
-        'description' => 'Tekken matches',
-        'location' => 'Germany',
-        'prince' => '20'
+        'name' => 'EVO Japan',
+        'description' => 'Tekken matches with korean',
+        'location' => 'Japan',
+        'prince' => '50'
         ]);
 
     $events = App\Event::all();
