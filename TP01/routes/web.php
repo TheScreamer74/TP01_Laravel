@@ -17,21 +17,7 @@ use App\Event;
 Route::get('/', function () {
     $events = App\Event::all();
 
-    App\Event::create([
-        'name' => 'un evenement',
-        'description' => 'ceci est un evenement juste pour remplir la base de donnée',
-        'location' => 'Nowhere',
-        'prince' => '0',
-        'starts_at' => new DateTime('+5 days')
-    ]);
 
-    App\Event::create([
-        'name' => 'deux evenement',
-        'description' => 'ceci est un evenement juste pour remplir la base de donnée',
-        'location' => 'Nowhere',
-        'prince' => '0',
-        'starts_at' => new DateTime('+10 days')
-    ]);
 
     return view('events.index')->withEvents($events);
 });
