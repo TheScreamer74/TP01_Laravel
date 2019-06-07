@@ -14,7 +14,7 @@ class AddStratsAtToEventsTable extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->dateTime('starts_at');
+            $table->dateTime('starts_at')->after('prince');
         });
     }
 
