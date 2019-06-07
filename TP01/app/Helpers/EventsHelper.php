@@ -1,18 +1,22 @@
 <?php
 
 
-if(!function_exists('format_price')){
-    function format_price($event){
+namespace App\Helpers;
+
+class EventsHelper{
+
+    public static function formatPrice($event){
         if($event->isFree()){
             return '<strong>Gratuit</strong>';
         } else {
             return sprintf("%.2f euros", $event->prince);
         }
     }
-}
 
-if(!function_exists('format_date')){
-    function format_date($date){
+
+    public static function formatPate($date){
         return $date->format('d/m/Y H:i');
     }
+
+
 }
