@@ -4,7 +4,7 @@
 namespace App\Helpers;
 
 use App\Event;
-use Carbon\Carbon;
+use DateTime;
 
 class EventsHelper{
 
@@ -17,7 +17,7 @@ class EventsHelper{
     }
 
 
-    public static function formatDate(Carbon $date){
+    public static function formatDate(DateTime $date){
         return $date->format('d/m/Y H:i');
     }
 
