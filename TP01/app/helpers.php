@@ -3,10 +3,10 @@
 
 if(!function_exists('format_price')){
     function format_price($event){
-        if($event->prince == 0){
+        if($event->isFree()){
             return '<strong>Gratuit</strong>';
         } else {
-            return $event->prince . 'euros';
+            return sprintf("%.2f euros", $event->prince);
         }
     }
 }
