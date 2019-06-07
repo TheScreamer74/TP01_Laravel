@@ -15,14 +15,6 @@
 
 
 Route::get('/', function () {
-
-    App\Event::create([
-        'name' => 'EVO Japan',
-        'description' => 'Tekken matches with korean',
-        'location' => 'Japan',
-        'prince' => '50'
-        ]);
-
     $events = App\Event::all();
 
     return view('events.index')->withEvents($events);
