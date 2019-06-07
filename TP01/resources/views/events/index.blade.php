@@ -16,6 +16,7 @@
             <p>{{ $event->description }}</p>
             <p>{{ $event->prince }}</p>
             <p>Lieu : {{ $event->location }}</p>
+            <p>Date : {{ $event->starts_at }}</p>
         </article>
         @if(! $loop->last)
             <hr>
