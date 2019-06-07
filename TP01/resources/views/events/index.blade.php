@@ -14,7 +14,7 @@
         <article>
             <h1>{{ $event->name }}</h1>
             <p>{{ $event->description }}</p>
-            <p>{{ $event->prince }}</p>
+            <p>{{ format_price($event) }}</p>
             <p>Lieu : {{ $event->location }}</p>
             <p>Date : {{ $event->starts_at }}</p>
         </article>
