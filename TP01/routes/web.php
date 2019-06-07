@@ -20,7 +20,7 @@ Route::get('/', function () {
         'name' => 'Damage Germany',
         'description' => 'Tekken matches',
         'location' => 'Germany',
-        'prix' => '20'
+        'prince' => '20'
         ]);
 
     $events = App\Event::all();
