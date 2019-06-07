@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "94d4bf9ac7f4a933030e46a346ee2917",
+    "content-hash": "e124a05a7b95f950521c278fb074df82",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -752,6 +752,55 @@
                 "storage"
             ],
             "time": "2019-05-20T20:21:14+00:00"
+        },
+        {
+            "name": "mercuryseries/laravel-helpers",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercuryseries/laravel-helpers.git",
+                "reference": "d62fd82e83a0679a02460cfef3d4ef40342f35f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercuryseries/laravel-helpers/zipball/d62fd82e83a0679a02460cfef3d4ef40342f35f6",
+                "reference": "d62fd82e83a0679a02460cfef3d4ef40342f35f6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MercurySeries\\Helpers\\HelpersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MercurySeries\\Helpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Honore Hounwanou",
+                    "email": "mercuryseries@gmail.com"
+                }
+            ],
+            "description": "Dynamic Method Helpers",
+            "keywords": [
+                "helpers",
+                "laravel",
+                "methods"
+            ],
+            "time": "2017-10-21T01:21:34+00:00"
         },
         {
             "name": "monolog/monolog",
