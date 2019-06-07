@@ -11,6 +11,19 @@
 |
 */
 
+use App;
+
+
 Route::get('/', function () {
-    return view('events.index');
+
+    Event::create([
+        'name' => 'Damage Germany',
+        'description' => 'Tekken matches',
+        'location' => 'Germany',
+        'price' => '20'
+        ]);
+
+    $events = Event::all();
+
+    return view('events.index')->withEvents($events);
 });
