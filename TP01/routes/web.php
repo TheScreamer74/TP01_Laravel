@@ -11,19 +11,19 @@
 |
 */
 
-use App;
+
 
 
 Route::get('/', function () {
 
-    Event::create([
+    App\Event::create([
         'name' => 'Damage Germany',
         'description' => 'Tekken matches',
         'location' => 'Germany',
         'price' => '20'
         ]);
 
-    $events = Event::all();
+    $events = App\Event::all();
 
     return view('events.index')->withEvents($events);
 });
