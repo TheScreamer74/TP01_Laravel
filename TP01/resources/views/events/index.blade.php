@@ -16,7 +16,7 @@
             <p>{{ $event->description }}</p>
             <p>{!! $formatPrice($event) !!}</p>
             <p>Lieu : {{ $event->location }}</p>
-            <p>Date : {{ $formatDate(($event->starts_at) }}</p>
+            <p>Date : {{ $formatDate($event->starts_at) }}</p>
         </article>
         @if(! $loop->last)
             <hr>
