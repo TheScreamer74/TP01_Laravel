@@ -3,9 +3,12 @@
 
 namespace App\Helpers;
 
+use App\Event;
+use Carbon\Carbon;
+
 class EventsHelper{
 
-    public static function formatPrice($event){
+    public static function formatPrice(Event $event){
         if($event->isFree()){
             return '<strong>Gratuit</strong>';
         } else {
@@ -14,7 +17,7 @@ class EventsHelper{
     }
 
 
-    public static function formatDate($date){
+    public static function formatDate(Carbon $date){
         return $date->format('d/m/Y H:i');
     }
 
