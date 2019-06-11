@@ -17,7 +17,6 @@ class CreateUrlsTable extends Migration
             $table->bigIncrements('id');
             $table->string('url');
             $table->string('shortened', 5);
-            $table->timestamps();
         });
     }
 
