@@ -20,8 +20,7 @@ Route::post('/', function (){
 
 
     $url = App\Url::where('url', request('url'))->first();
-
-    dd(request('url'));
+    
 
     if($url) {
         return view('result')->with('shortened', $url->shortened);
