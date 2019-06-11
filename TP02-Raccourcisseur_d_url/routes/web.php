@@ -25,7 +25,7 @@ Route::post('/', function (){
     $url = App\Url::where('url', request('url'))->first();
 
     dump($url);
-    
+
     if($url) {
         return view('result')->with('shortened', $url->shortened);
     }
