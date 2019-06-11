@@ -19,10 +19,9 @@ Route::get('/', function () {
 Route::post('/', function (){
 
 
-    $url = App\Url::where('url', request('url'));
+    $url = App\Url::where('url', request('url')->first());
 
-
-    dd($url);
+    
 
     if($url) {
         return view('result')->with('shortened', $url->shortened);
