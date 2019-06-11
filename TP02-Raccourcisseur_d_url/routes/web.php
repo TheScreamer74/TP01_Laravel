@@ -23,7 +23,7 @@ Route::post('/', function (){
 
 
 
-    $url = Url::where(request('url'))->first();
+    $url = Url::where('url', request('url'))->first();
 
 
 
@@ -35,7 +35,7 @@ Route::post('/', function (){
 
 Route::get('/{shortened}', function ($shortened) {
 
-    $url = Url::where($shortened)->first();
+    $url = Url::where('shortened', $shortened)->first();
 
     if(! $url){
         return redirect('/');
