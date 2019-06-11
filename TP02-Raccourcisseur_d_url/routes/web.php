@@ -20,16 +20,16 @@ Route::get('/', function () {
 
 Route::post('/', function (){
 
-
-
-
     $url = Url::where('url', request('url'))->first();
-
-
 
     if($url) {
         return view('result')->with('shortened', $url->shortened);
     }
+
+    Url::create([
+        'url' => request('url'),
+        'shortened' =>''
+    ]);
 });
 
 
@@ -39,7 +39,8 @@ Route::get('/{shortened}', function ($shortened) {
 
     if(! $url){
         return redirect('/');
-    } else {
-        return redirect($url->url);
     }
+
+    return redirect($url->url);
+
 });
