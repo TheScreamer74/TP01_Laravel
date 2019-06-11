@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', 'UrlsController@Create');
 
 Route::post('/', function (){
     $url = request('url');
