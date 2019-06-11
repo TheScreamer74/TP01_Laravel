@@ -18,4 +18,4 @@ Route::get('/', 'UrlsController@Create');
 
 Route::post('/', 'UrlsController@Store');
 
-Route::get('/{shortened}' ,'UrlsController@Sho');
+Route::get('/{shortened}' ,'UrlsController@Show');
