@@ -22,16 +22,8 @@ Route::post('/', function (){
     $url = request('url');
 
 
-
-    $validation = Validator::make(compact('url'), ['url' => 'required|url']);
-
-    if($validation->fails()){
-        dd('Failed');
-
-    } else {
-        dd('Success');
-    }
-
+   Validator::make(compact('url'), ['url' => 'required|url'])->validate();
+   
 
     $record = Url::where('url', $url)->first();
 
