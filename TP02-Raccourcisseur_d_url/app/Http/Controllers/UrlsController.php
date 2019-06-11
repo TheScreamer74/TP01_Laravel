@@ -14,7 +14,32 @@ class UrlsController extends Controller
      */
     public function index()
     {
-        //
+        $url = request('url');
+
+
+        Validator::make(
+            compact('url'),
+            ['url' => 'required|url'],
+            [
+                'url.require' => 'vous devez fournir une URL',
+                'url.url' => "l'URL est invalide"
+            ])->validate();
+
+
+        $record = Url::where('url', $url)->first();
+
+        if($record) {
+            return view('result')->with('shortened', $record->shortened);
+        }
+
+        $row = Url::create([
+            'url' => $url,
+            'shortened' => Url::getUniqueShortUrl()
+        ]);
+
+        if($row) {
+            return view('result')->with('shortened', $row->shortened);
+        }
     }
 
     /**
@@ -24,7 +49,7 @@ class UrlsController extends Controller
      */
     public function create()
     {
-        //
+        return view('welcome');
     }
 
     /**
