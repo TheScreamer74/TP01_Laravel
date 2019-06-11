@@ -38,7 +38,6 @@ class UrlsController extends Controller
     public function store(Request $request)
     {
         $url = request('url');
-
         \Validator::make(
             compact('url'),
             ['url' => 'required|url'],
@@ -46,19 +45,14 @@ class UrlsController extends Controller
                 'url.require' => 'vous devez fournir une URL',
                 'url.url' => "l'URL est invalide"
             ])->validate();
-
-
         $record = Url::where('url', $url)->first();
-
         if($record) {
             return view('result')->with('shortened', $record->shortened);
         }
-
         $row = Url::create([
             'url' => $url,
             'shortened' => Url::getUniqueShortUrl()
         ]);
-
         if($row) {
             return view('result')->with('shortened', $row->shortened);
         }
@@ -67,12 +61,16 @@ class UrlsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Url  $url
+     * @param  $shortened
      * @return \Illuminate\Http\Response
      */
-    public function show(Url $url)
+    public function show($shortened)
     {
-        //
+        $url = Url::where('shortened', $shortened)->first();
+        if(! $url){
+            return redirect('/');
+        }
+        return redirect($url->url);
     }
 
     /**

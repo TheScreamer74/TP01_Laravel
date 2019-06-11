@@ -18,16 +18,4 @@ Route::get('/', 'UrlsController@Create');
 
 Route::post('/', 'UrlsController@Store');
 
-
-
-Route::get('/{shortened}', function ($shortened) {
-
-    $url = Url::where('shortened', $shortened)->first();
-
-    if(! $url){
-        return redirect('/');
-    }
-
-    return redirect($url->url);
-
-});
+Route::get('/{shortened}' ,'UrlsController@Sho');
