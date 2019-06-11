@@ -42,7 +42,7 @@ Route::post('/', function (){
     ]);
 
     if($row) {
-        return view('result')->whith('shortened', $url->shortened);
+        return view('result')->with('shortened', $url->shortened);
     }
 });
 
