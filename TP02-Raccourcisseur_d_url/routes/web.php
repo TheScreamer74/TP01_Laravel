@@ -36,12 +36,12 @@ Route::post('/', function (){
         return $shortened;
     }
 
-    $url = Url::create([
+    $row = Url::create([
         'url' => request('url'),
         'shortened' => getUniqueShortUrl()
     ]);
 
-    if($url) {
+    if($row) {
         return view('result')->whith('shortened', $url->shortened);
     }
 });
