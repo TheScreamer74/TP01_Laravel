@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('resources.layouts.base')
 
 @section('content')
     <h1>raccourcisseur d'URL</h1>
