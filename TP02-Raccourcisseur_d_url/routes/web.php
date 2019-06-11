@@ -23,7 +23,7 @@ Route::post('/', function (){
 
 
    Validator::make(compact('url'), ['url' => 'required|url'])->validate();
-   
+
 
     $record = Url::where('url', $url)->first();
 
@@ -37,7 +37,7 @@ Route::post('/', function (){
     ]);
 
     if($row) {
-        return view('result')->with('shortened', $record->shortened);
+        return view('result')->with('shortened', $row->shortened);
     }
 });
 
