@@ -16,7 +16,7 @@ use App\Url;
 
 Route::get('/', 'UrlsController@Create');
 
-Route::post('/', 'UrlsController@Index');
+Route::post('/', 'UrlsController@Store');
 
 
 
