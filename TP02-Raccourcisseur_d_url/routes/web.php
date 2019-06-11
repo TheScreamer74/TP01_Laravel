@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::post('/', function (){
 
 
-  
+
 
     $url = App\Url::where('url', request('url'))->first();
 

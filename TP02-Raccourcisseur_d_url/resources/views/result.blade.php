@@ -5,5 +5,5 @@
 @section('content')
     <h1>Resultats</h1>
 
-    <p>{{ $shortened }}}</p>
+    <p>{{ $shortened }}</p>
 @stop
