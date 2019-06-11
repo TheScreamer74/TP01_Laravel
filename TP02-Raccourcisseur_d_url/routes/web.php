@@ -17,5 +17,8 @@ Route::get('/', function () {
 
 
 Route::post('/', function (){
-   dd('LoL');
+   request('url');
+
+
+
 });
