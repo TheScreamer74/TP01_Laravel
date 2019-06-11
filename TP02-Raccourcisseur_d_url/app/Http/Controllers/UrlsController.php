@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Url;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -38,7 +39,7 @@ class UrlsController extends Controller
     public function store(Request $request)
     {
         $url = request('url');
-        \Validator::make(
+        Validator::make(
             compact('url'),
             ['url' => 'required|url'],
             [

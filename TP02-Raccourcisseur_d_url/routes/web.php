@@ -11,8 +11,6 @@
 |
 */
 
-use App\Url;
-
 
 Route::get('/', 'UrlsController@Create');
 
