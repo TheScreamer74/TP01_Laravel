@@ -11,6 +11,8 @@
 |
 */
 
+use App\Url;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,11 +23,23 @@ Route::post('/', function (){
 
 
 
-    $url = App\Url::where('url', request('url'))->first();
+    $url = Url::where(request('url'))->first();
 
 
 
     if($url) {
         return view('result')->with('shortened', $url->shortened);
+    }
+});
+
+
+Route::get('/{shortened}', function ($shortened) {
+
+    $url = Url::where($shortened)->first();
+
+    if(! $url){
+        return redirect('/');
+    } else {
+        return redirect($url->url);
     }
 });

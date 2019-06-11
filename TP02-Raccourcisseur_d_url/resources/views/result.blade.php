@@ -5,5 +5,7 @@
 @section('content')
     <h1>Resultats</h1>
 
-    <p>{{ $shortened }}</p>
+    <a href="{{ config('app.url') }}/{{ $shortened }}">
+        {{ config('app.url') }}/{{ $shortened }}
+    </a>
 @stop
