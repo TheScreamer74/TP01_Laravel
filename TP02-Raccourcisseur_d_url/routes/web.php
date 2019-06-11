@@ -19,20 +19,33 @@ Route::get('/', function () {
 
 
 Route::post('/', function (){
+    $url = request('url');
 
-    $url = Url::where('url', request('url'))->first();
 
-    if($url) {
-        return view('result')->with('shortened', $url->shortened);
+
+    $validation = Validator::make(compact('url'), ['url' => 'required|url']);
+
+    if($validation->fails()){
+        dd('Failed');
+
+    } else {
+        dd('Success');
+    }
+
+
+    $record = Url::where('url', $url)->first();
+
+    if($record) {
+        return view('result')->with('shortened', $record->shortened);
     }
 
     $row = Url::create([
-        'url' => request('url'),
+        'url' => $url,
         'shortened' => Url::getUniqueShortUrl()
     ]);
 
     if($row) {
-        return view('result')->with('shortened', $url->shortened);
+        return view('result')->with('shortened', $record->shortened);
     }
 });
 
