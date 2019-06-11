@@ -9,7 +9,7 @@
     <form action="" method="POST">
         {{ csrf_field() }}
         <input type="text" name="url" placeholder="Entrez votre url ici">
-        {!! $errors->first('url', '<p>:message</p>') !!}
+        {!! $errors->first('url', '<p class="error-msg">:message</p>') !!}
         <input type="submit" value="Shorten URL">
     </form>
 @stop
