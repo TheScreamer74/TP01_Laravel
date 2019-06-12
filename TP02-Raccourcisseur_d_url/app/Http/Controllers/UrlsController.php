@@ -38,14 +38,10 @@ class UrlsController extends Controller
      */
     public function store(Request $request)
     {
-        $url = request('url');
-        Validator::make(
-            compact('url'),
-            ['url' => 'required|url'],
-            [
-                'url.require' => 'vous devez fournir une URL',
-                'url.url' => "l'URL est invalide"
-            ])->validate();
+        $url = $request->get('url');
+
+        $this->validate($request, ['url' => 'required|url']);
+
         $record = Url::where('url', $url)->first();
         if($record) {
             return view('result')->with('shortened', $record->shortened);
