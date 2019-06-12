@@ -4,7 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Componnent\HttpKernel\Exception\ModelNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class Handler extends ExceptionHandler
