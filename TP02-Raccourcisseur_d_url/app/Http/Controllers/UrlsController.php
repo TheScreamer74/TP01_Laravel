@@ -63,10 +63,8 @@ class UrlsController extends Controller
      */
     public function show($shortened)
     {
-        $url = Url::where('shortened', $shortened)->first();
-        if(! $url){
-            return redirect('/');
-        }
+        $url = Url::where('shortened', $shortened)->firstOrFail();
+
         return redirect($url->url);
     }
 
