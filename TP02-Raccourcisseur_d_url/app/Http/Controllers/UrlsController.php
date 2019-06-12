@@ -38,21 +38,13 @@ class UrlsController extends Controller
      */
     public function store(Request $request)
     {
-        $url = $request->get('url');
 
         $this->validate($request, ['url' => 'required|url']);
 
-        $record = Url::where('url', $url)->first();
-        if($record) {
-            return view('result')->with('shortened', $record->shortened);
-        }
-        $row = Url::create([
-            'url' => $url,
-            'shortened' => Url::getUniqueShortUrl()
-        ]);
-        if($row) {
-            return view('result')->with('shortened', $row->shortened);
-        }
+        $record = $this->getRecordForUrl($request->get('url'));
+
+        return view('result')->with('shortened', $record->shortened);
+
     }
 
     /**
@@ -101,4 +93,21 @@ class UrlsController extends Controller
     {
         //
     }
+
+    private function getRecordForUrl($url){
+
+        $record = Url::where('url', $url)->first();
+        if($record) {
+            return $record;
+        }
+
+
+        return Url::create([
+            'url' => $url,
+            'shortened' => Url::getUniqueShortUrl()
+        ]);
+
+
+    }
+
 }
