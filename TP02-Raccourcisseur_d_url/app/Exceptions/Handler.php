@@ -49,6 +49,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         dump($exception);
+        agfrafa;
        if ($exception instanceof ModelNotFoundException)
             return redirect('/');
 
