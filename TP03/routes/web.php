@@ -13,4 +13,4 @@
 
 Route::get('/', 'PagesController@Home');
 
-Route::ressource('events', 'EventsController');
+Route::resource('events', 'EventsController');
