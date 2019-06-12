@@ -23,7 +23,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        dd('Display form event');
+
     }
 
     /**
@@ -34,7 +35,8 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('create event');
+
     }
 
     /**
@@ -45,7 +47,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        dd('Display event');
     }
 
     /**
@@ -56,7 +58,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd('Display a form  edit event');
     }
 
     /**
@@ -68,7 +70,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd('Display an event');
     }
 
     /**
@@ -79,6 +81,7 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('destroy event');
+
     }
 }
