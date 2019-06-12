@@ -34,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="654">
-              <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+              <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
               <folding>
                 <element signature="e#34#48#0#PHP" expanded="true" />
               </folding>
@@ -112,41 +112,6 @@
               <item name="TP02-Raccourcisseur_d_url" type="b2602c69:ProjectViewProjectNode" />
               <item name="TP02-Raccourcisseur_d_url" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="TP02-Raccourcisseur_d_url" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TP02-Raccourcisseur_d_url" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TP02-Raccourcisseur_d_url" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TP02-Raccourcisseur_d_url" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TP02-Raccourcisseur_d_url" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TP02-Raccourcisseur_d_url" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TP02-Raccourcisseur_d_url" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TP02-Raccourcisseur_d_url" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TP02-Raccourcisseur_d_url" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TP02-Raccourcisseur_d_url" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Providers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TP02-Raccourcisseur_d_url" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TP02-Raccourcisseur_d_url" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -192,12 +157,12 @@
       <option name="presentableId" value="Default" />
       <updated>1560239465873</updated>
       <workItem from="1560239466961" duration="13308000" />
-      <workItem from="1560325985741" duration="1796000" />
+      <workItem from="1560325985741" duration="2513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15104000" />
+    <option name="totallyTimeSpent" value="15821000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -376,7 +341,7 @@
     <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="654">
-          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+          <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
           <folding>
             <element signature="e#34#48#0#PHP" expanded="true" />
           </folding>
