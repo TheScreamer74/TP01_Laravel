@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
     {
 
         dd($exception);
-       if ($exception instanceof NotFoundHttpException)
+       if ($exception instanceof ModelNotFoundException)
             return redirect('/');
 
         return parent::render($request, $exception);
