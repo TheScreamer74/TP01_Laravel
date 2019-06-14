@@ -81,7 +81,7 @@ class QuestionController extends Controller
      */
     public function edit(questions $questions)
     {
-        //
+        dd("edit question");
     }
 
     /**
@@ -93,7 +93,7 @@ class QuestionController extends Controller
      */
     public function update(Request $request, questions $questions)
     {
-        //
+        dd("update question");
     }
 
     /**

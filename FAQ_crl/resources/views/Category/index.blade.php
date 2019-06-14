@@ -11,6 +11,9 @@
 				<form action="{{ route('category.destroy', $categorie->id) }}" method="DELETE">
 					<input type="submit" name="" value="Supprimer">
 				</form>
+				<form action="{{ route('category.edit', $categorie->id) }}" method="PUT">
+					<input type="submit" name="" value="Modifier">
+				</form>
 
 				<div class="hidden" id="div_{{ $categorie->id }}">
 
@@ -27,6 +30,14 @@
 								<div class="hidden" id="desc_{{ $question->id }}">
 								
 									{{ $question->description }}
+								</div>
+								<div>
+									<form action="{{ route('question.destroy', $question->id) }}" method="DELETE">
+										<input type="submit" name="" value="Supprimer">
+									</form>
+									<form action="{{ route('question.edit', $question->id) }}" method="PUT">
+										<input type="submit" name="" value="Modifier">
+									</form>
 								</div>
 							</td>
 						</tr>

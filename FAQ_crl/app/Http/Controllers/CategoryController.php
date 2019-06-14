@@ -81,7 +81,7 @@ class CategoryController extends Controller
      */
     public function edit(categories $categories)
     {
-        //
+        dd("edit category");
     }
 
     /**
@@ -93,7 +93,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, categories $categories)
     {
-        //
+        dd("update category");
     }
 
     /**

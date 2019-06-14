@@ -17,6 +17,12 @@ Route::get('/ask', 'QuestionController@create')->name('question.create');
 
 Route::post('/ask', 'QuestionController@store')->name('question.store');
 
+Route::put('/ask/{id}', 'QuestionController@edit')->name('question.edit');
+
+Route::post('/ask/{id}', 'QuestionController@update')->name('question.update');
+
+Route::delete('ask/{id}', 'QuestionController@destroy')->name('question.destroy');
+
 Route::get('/redact', 'CategoryController@create')->name('category.create');
 
 Route::post('/redact', 'CategoryController@store')->name('category.store');
@@ -25,5 +31,7 @@ Route::get('/contact', 'ContactController@index')->name('contact.index');
 
 Route::post('/contact', 'ContactController@store')->name('contact.store');
 
-Route::get('/{id}', 'CategoryController@destroy')->name('category.destroy');
+Route::put('/{id}', 'CategoryController@edit')->name('category.edit');
+
+Route::delete('/{id}', 'CategoryController@destroy')->name('category.destroy');
 
