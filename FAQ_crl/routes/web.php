@@ -53,7 +53,7 @@ Route::post('/redact', 'CategoryController@store')->name('category.store');
 
 Route::put('/redact/{id}', 'CategoryController@edit')->name('category.edit');
 
-Route::post('/ask/{id}', 'CategoryController@update')->name('category.update');
+Route::post('/redact/{id}', 'CategoryController@update')->name('category.update');
 
 Route::delete('/redact/{id}', 'CategoryController@destroy')->name('category.destroy');
 

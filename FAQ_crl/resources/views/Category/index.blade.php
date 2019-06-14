@@ -8,10 +8,15 @@
 		<tr>
 			<td>
 				<a href="#" onclick="revertClass(this, getElementById('div_{{ $categorie->id }}'))">{{ $categorie->title }} ▸</a>
-				<form action="{{ route('category.destroy', $categorie->id) }}" method="DELETE">
+				<form action="{{ route('category.destroy', $categorie->id) }}" method="POST">
+					{{ csrf_field() }}
+					{{ method_field('DELETE') }}
 					<input type="submit" name="" value="Supprimer">
+					
 				</form>
-				<form action="{{ route('category.edit', $categorie->id) }}" method="PUT">
+				<form action="{{ route('category.edit', $categorie->id) }}" method="POST">
+					{{ csrf_field() }}
+					{{ method_field('PUT') }}
 					<input type="submit" name="" value="Modifier">
 				</form>
 
@@ -32,10 +37,14 @@
 									{{ $question->description }}
 								</div>
 								<div>
-									<form action="{{ route('question.destroy', $question->id) }}" method="DELETE">
+									<form action="{{ route('question.destroy', $question->id) }}" method="POST">
+										{{ csrf_field() }}
+										{{ method_field('DELETE') }}
 										<input type="submit" name="" value="Supprimer">
 									</form>
-									<form action="{{ route('question.edit', $question->id) }}" method="PUT">
+									<form action="{{ route('question.edit', $question->id) }}" method="POST">
+										{{ csrf_field() }}
+										{{ method_field('PUT') }}
 										<input type="submit" name="" value="Modifier">
 									</form>
 								</div>
