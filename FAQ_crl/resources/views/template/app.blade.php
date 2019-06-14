@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script type="text/javascript">
-            function revertClass(item){
-                console.log(item);
+            function revertClass(cat, item){
                 if(item.className == "hidden"){
                     item.className = "show";
+                    cat.innerHTML = cat.innerHTML.replace('▸', '▾');
                 }
                 else{
-                    item.className = "hidden";   
+                    item.className = "hidden";
+                    cat.innerHTML = cat.innerHTML.replace('▾', '▸');   
                 }
 
             }
@@ -28,6 +29,10 @@
         </style>
     </head>
     <body>
+        <h1>FAQ</h1>
         @yield('content')
+
+        <h2>NOUS CONTACTER</h2>
+        <p>Si vous rencontrez le moindre problème lors de vos démarches vous pouvez <a href="{{ route('contact.index') }}" >nous contacter</a></p>
     </body>
 </html>
