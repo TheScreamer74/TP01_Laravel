@@ -6,6 +6,7 @@ use App\Forms\QuestionForm;
 use App\questions;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\Field;
 
 class QuestionController extends Controller
 {
@@ -79,9 +80,38 @@ class QuestionController extends Controller
      * @param  \App\questions  $questions
      * @return \Illuminate\Http\Response
      */
-    public function edit(questions $questions)
+    public function edit($id, FormBuilder $formBuilder)
     {
-        dd("edit question");
+
+        $question = questions::where('id', $id)->get();
+
+
+        $form = $formBuilder->createByArray([
+            [
+                'name' => 'title',
+                'type' => Field::TEXT,
+                'value' => $question[0]->title,
+            ],
+            [
+                'name' => 'description',
+                'type' => Field::TEXTAREA,
+                'value' => $question[0]->description,
+            ],
+            [
+                'name' => 'Modifier',
+                'type' => Field::BUTTON_SUBMIT,
+                'value' => 'Modifier'
+            ]
+        ]
+        ,[
+            'method' => 'POST',
+            'url' => route('question.update', '$question->id')
+        ]);
+
+        
+
+
+        return view('Category.edit', ['question' => $question, 'form' => $form]);
     }
 
     /**
