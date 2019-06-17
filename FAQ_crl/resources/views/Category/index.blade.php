@@ -54,7 +54,7 @@
 					@empty
 					
 						<tr>
-							<td>Il n'y a pas de questions pour cette catégorie. Un problème ? <a href="#">Nous contacter</a></td>
+							<td>Il n'y a pas de questions pour cette catégorie. Un problème ? <a href="{{ route('contact.index') }}">Nous contacter</a></td>
 						</tr>
 					
 					@endforelse
@@ -65,7 +65,7 @@
 		</tr>
 		@empty
 			<tr>
-				<td>Il n'y a pas de catégorie. Un problème ? <a href="#">Nous contacter</a></td>
+				<td>Il n'y a pas de catégorie. Un problème ? <a href="{{ route('contact.index') }}">Nous contacter</a></td>
 			</tr>
 		@endforelse
 	</table>
