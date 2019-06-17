@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
         <script type="text/javascript">
             function revertClass(cat, item){
@@ -29,6 +30,7 @@
         </style>
     </head>
     <body>
+        @include('flash::message')
         <h1>FAQ</h1>
         @yield('content')
 

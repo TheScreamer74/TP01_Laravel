@@ -11,7 +11,7 @@
 				<form action="{{ route('category.destroy', $categorie->id) }}" method="POST">
 					{{ csrf_field() }}
 					{{ method_field('DELETE') }}
-					<input type="submit" name="" value="Supprimer">
+					<input type="submit" name="" value="Supprimer" onclick="return confirm('Voulez vous vraiment supprimer cette categorie ?')">
 					
 				</form>
 				<form action="{{ route('category.edit', $categorie->id) }}" method="POST">

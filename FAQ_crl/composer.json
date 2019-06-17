@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
         "kris/laravel-form-builder": "^1.20",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "wildbit/swiftmailer-postmark": "^3.0"

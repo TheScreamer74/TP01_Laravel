@@ -7,6 +7,7 @@ use App\categories;
 use App\questions;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\Field;
 
 class CategoryController extends Controller
 {
@@ -34,6 +35,7 @@ class CategoryController extends Controller
             'url' => route('category.store'),
         ]);
 
+
         return view('Category.create', compact('form'));
         
     }
@@ -53,13 +55,15 @@ class CategoryController extends Controller
         }
 
 
-      categories::create([
-        'id' => ((integer)(categories::all()->count())) + 1,
-        'title' => $request->title,
-        'description' => $request->descritpion
-      ]);
+        categories::create([
+            'id' => ((integer)(categories::all()->count())) + 1,
+            'title' => $request->title,
+            'description' => $request->descritpion
+        ]);
 
-      return redirect()->route('category.index');
+        flash('La categorie ' . $request->title . ' à été créée avec succès');
+
+        return redirect()->route('category.index');
     }
 
     /**
@@ -79,9 +83,47 @@ class CategoryController extends Controller
      * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(categories $categories)
+    public function edit($id, FormBuilder $formBuilder)
     {
-        dd("edit category");
+       // dd($id);
+
+
+
+        $category = categories::where('id', $id)->get();
+
+        //dd($category);
+
+        //dd(categories::where('id', $question[0]->categories_id)->get());
+        //dd((categories::where('id', $question[0]->categories_id)->get())[0]->title);
+
+        $form = $formBuilder->createByArray([
+            [
+                'name' => 'title',
+                'type' => Field::TEXT,
+                'value' => $category[0]->title,
+                'rules' => 'required'
+            ],
+            [
+                'name' => 'description',
+                'type' => Field::TEXTAREA,
+                'value' => $category[0]->description,
+                'rules' => 'required'
+            ],
+            [
+                'name' => 'Modifier',
+                'type' => Field::BUTTON_SUBMIT,
+                'value' => 'Modifier'
+            ]
+        ]
+        ,[
+            'method' => 'POST',
+            'url' => route('category.update', $category[0]->id)
+        ]);
+
+
+
+        return view('Category.edit', ['category' => $category, 'form' => $form]);
+
     }
 
     /**
@@ -91,9 +133,16 @@ class CategoryController extends Controller
      * @param  \App\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categories $categories)
+    public function update(Request $request, FormBuilder $formBuilder, $id)
     {
-        dd("update category");
+        $category = categories::where('id', $id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        flash("la categorie " . $request->title . " a bien été modifié");
+
+        return redirect(route('category.index'));
     }
 
     /**
@@ -105,6 +154,8 @@ class CategoryController extends Controller
     public function destroy(int $id)
     {
 
+
+        $category = categories::where('id', $id)->get();
 
 
         categories::where('id', $id)->delete();
@@ -118,7 +169,9 @@ class CategoryController extends Controller
             $value->save();
         }
 
-      
+
+
+        flash('La categorie ' . $category[0]->title . ' à été supprimée avec succès');
 
         return redirect(route('category.index'));
     }
