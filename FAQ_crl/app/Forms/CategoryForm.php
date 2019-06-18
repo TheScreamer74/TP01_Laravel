@@ -21,6 +21,8 @@ class CategoryForm extends Form
                 'attr' => ['onclick' => 'addField(this.parentNode)']
             ])
 
-            ->add('Envoyer', 'submit');
+            ->add('Envoyer', 'submit', [
+                'attr' => ['id' => 'button submit']
+            ]);
     }
 }
