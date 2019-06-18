@@ -4,21 +4,21 @@ namespace App\Forms;
 
 use Kris\LaravelFormBuilder\Form;
 
-class CategoryForm extends Form
+class ContactForm extends Form
 {
     public function buildForm()
     {
         $this
-            ->add('title', 'text', [
+            ->add('email', 'email', [
             	'rules' => 'required'
             ])
 
-            ->add('descritpion', 'textarea', [
+            ->add('Votre problème', 'text', [
             	'rules' => 'required'
             ])
 
-            ->add('addField', 'button', [
-                'attr' => ['onclick' => 'addField(this.parentNode)']
+            ->add('Descritpion','textarea', [
+                'rules' => 'required'
             ])
 
             ->add('Envoyer', 'submit');

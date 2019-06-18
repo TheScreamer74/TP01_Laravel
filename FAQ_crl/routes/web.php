@@ -87,3 +87,6 @@ Route::post('/contact', 'ContactController@store')->name('contact.store');
 
 Route::get('/', 'CategoryController@index')->name('category.index');
 
+
+Auth::routes(['register' => false]);
+

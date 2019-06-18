@@ -18,6 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
+
+        
         $categories = categories::with('questions')->get();
         return view('Category.index')
         ->withCategories($categories);
