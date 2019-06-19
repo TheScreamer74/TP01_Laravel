@@ -28,14 +28,15 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(FormBuilder $formBuilder)
+    public function create(FormBuilder $formBuilder, $id = null)
     {
-        $form = $formBuilder->create(\App\Forms\QuestionForm::class, [
-            'method' => 'POST',
-            'url' => route('question.store'),
-        ]);
+        $array = array();
+        foreach ((\App\categories::all(['title'])->toArray()) as $cat => $title) {
 
-        return view('Question.create', compact('form')); 
+                    $array[$cat] = $title['title'];
+        }
+
+        return view('Question.create', compact('array'), compact('id')); 
     }
 
     /**
@@ -46,17 +47,22 @@ class QuestionController extends Controller
      */
     public function store(Request $request, FormBuilder $formBuilder)
     {
-      $form = $formBuilder->create(QuestionForm::class);
+        //dd($request);
+        if($request->personne != null){
+            $request->description = $request->description . "\n" . "\r" . "\t" ."Personne Lié au document : ". "\n" . "\r";    
+        
+        
+           foreach ($request->personne as $value) {
+                $request->description = $request->description . "\t" . "\t-" . $value . "\n" . "\r";
+            }
+        }
 
-      if(!$form->isValid()) {
-        return redirect()->back()->withErrors($form->getErrors())->withInput();
-      }
-
-
+        //dd($request->description);
+        
 
       questions::create([
         'title' => $request->title,
-        'description' => $request->descritpion,
+        'description' => $request->description,
         'categories_id' => (integer)$request->categorie + 1
       ]);
 
@@ -95,46 +101,11 @@ class QuestionController extends Controller
         }
 
 
-        dump($array);
+        //dump($array);
         //dd(categories::where('id', $question[0]->categories_id)->get());
         //dd((categories::where('id', $question[0]->categories_id)->get())[0]->title);
 
-        $form = $formBuilder->createByArray([
-            [
-                'name' => 'title',
-                'type' => Field::TEXT,
-                'value' => $question[0]->title,
-                'rules' => 'required'
-            ],
-            [
-                'name' => 'description',
-                'type' => Field::TEXTAREA,
-                'value' => $question[0]->description,
-                'rules' => 'required'
-            ],
-            [
-                'name' => 'category',
-                'type'=> 'select',
-                'choices' => $array,
-                'selected' => $question[0]->categories_id - 1,
-                'empty_value' => 'Choisissez une categorie',
-                'rules' => 'required'
-            ],
-            [
-                'name' => 'Modifier',
-                'type' => Field::BUTTON_SUBMIT,
-                'value' => 'Modifier'
-            ]
-        ]
-        ,[
-            'method' => 'POST',
-            'url' => route('question.update', $question[0]->id )
-        ]);
-
-        
-
-
-        return view('Question.edit', ['question' => $question, 'form' => $form]);
+        return view('Question.edit', ['question' => $question, 'array' => $array]);
     }
 
     /**

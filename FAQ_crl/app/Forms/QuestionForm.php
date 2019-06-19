@@ -28,6 +28,11 @@ class QuestionForm extends Form
             	'empty_value' => 'Choisissez une categorie',
             	'rules' => 'required'
             ])
+            
+            ->add('addField', 'button', [
+                'attr' => ['onclick' => 'addField(this.parentNode)']
+            ])
+
             ->add('Envoyer', 'submit');
 
         

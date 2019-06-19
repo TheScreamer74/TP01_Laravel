@@ -25,7 +25,7 @@
 |
 */
 
-Route::get('/ask', 'QuestionController@create')->name('question.create');
+Route::get('/ask/{id}', 'QuestionController@create')->name('question.create');
 
 Route::post('/ask', 'QuestionController@store')->name('question.store');
 

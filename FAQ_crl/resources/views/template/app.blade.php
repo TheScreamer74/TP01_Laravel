@@ -16,14 +16,40 @@
             .hidden{
                 display: none;
             }
+            .main{
+                display: flex;
+                flex-direction: column;
+                margin-left: 10%;
+            }
+            .categories{
+                display: flex;
+                flex-direction: column;
+            }
+            .buttoncontrol{
+                display: flex;
+                flex-direction: row;
+            }
+            .inline{
+                display: inline;
+            }
+            .questions{
+                
+            }
         </style>
     </head>
     <body>
         @include('flash::message')
-        <h1>FAQ</h1>
-        @yield('content')
 
-        <h2>NOUS CONTACTER</h2>
-        <p>Si vous rencontrez le moindre problème lors de vos démarches vous pouvez <a href="{{ route('contact.index') }}" >nous contacter</a></p>
+        <div class="main">
+            <h1>FAQ</h1>
+            <div class="contenu">
+                @yield('content')
+            </div>
+            <div class="contenu">
+                <h2>NOUS CONTACTER</h2>
+                <p>Si vous rencontrez le moindre problème lors de vos démarches vous pouvez <a href="{{ route('contact.index') }}" >nous contacter</a></p>
+            </div>
+        </div>
+
     </body>
 </html>

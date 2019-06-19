@@ -17,10 +17,6 @@ class CategoryForm extends Form
             	'rules' => 'required'
             ])
 
-            ->add('addField', 'button', [
-                'attr' => ['onclick' => 'addField(this.parentNode)']
-            ])
-
             ->add('Envoyer', 'submit', [
                 'attr' => ['id' => 'button submit']
             ]);
