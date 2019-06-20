@@ -48,13 +48,29 @@ class QuestionController extends Controller
     public function store(Request $request, FormBuilder $formBuilder)
     {
         //dd($request);
+
+        $length = strlen($request->description);
+        for ($i = 0; $i< $length; $i++) {
+            if($i%50 == 49){
+                $request->description = substr_replace($request->description, "\n", $i, 0);
+            }
+        }
+
         if($request->personne != null){
             $request->description = $request->description . "\n" . "\r" . "\t" ."Personne Lié au document : ". "\n" . "\r";    
         
         
            foreach ($request->personne as $value) {
-                $request->description = $request->description . "\t" . "\t-" . $value . "\n" . "\r";
+                $request->description = $request->description . "\t" . "\t-" . $value . "\n";
             }
+        }
+
+        if($request->notes !=null){
+            $request->description = $request->description . "\n" . "\r" . "\t" ."Notes Importantes : ". "\n" . "\r"; 
+            
+            foreach ($request->notes as $value) {
+                $request->description = $request->description . "\t" . "\t-" . $value . "\n";
+            }  
         }
 
         //dd($request->description);
@@ -63,7 +79,7 @@ class QuestionController extends Controller
       questions::create([
         'title' => $request->title,
         'description' => $request->description,
-        'categories_id' => (integer)$request->categorie + 1
+        'categories_id' => (integer)$request->categories + 1
       ]);
 
       flash('La question ' . $request->title . ' à été créée avec succès');

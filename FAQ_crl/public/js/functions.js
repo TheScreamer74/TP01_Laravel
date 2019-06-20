@@ -1,6 +1,7 @@
 
 console.log('ready');
-var cpt = 0;
+var cptperson = 0;
+var cptnote = 0
 
 
 
@@ -17,30 +18,54 @@ function revertClass(cat, item){
 
 function addField(form){
 
-    node = document.createElement('span');
-    node.innerHTML = "<div class='form-group' id='personne" + cpt +"'>" + "<label class='col-lg-1 control-label'>Personne " + (cpt+1) + "</label>" + "<div class='col-lg-10'>" + "<input type='text' class='form-control' name='personne[" + cpt + "]' placeholder='Nom Prénom' Required>" + "</div></div>";
-    form.parentNode.appendChild(node);
-    cpt++;
-    
-    if(cpt === 1){
-        $('#btnsuppr').prop('disabled', false);
-        $('#btnsuppr').prop('hidden', false);
+    if(form.parentNode.parentNode.id === "person"){
+        node = document.createElement('span');
+        node.innerHTML = "<div class='form-group' id='personne" + cptperson +"'>" + "<label class='col-lg-1 control-label'>Personne " + (cptperson+1) + "</label>" + "<div class='col-lg-10'>" + "<input type='text' class='form-control' name='personne[" + cptperson + "]' placeholder='Nom Prénom' Required>" + "</div></div>";
+        form.parentNode.appendChild(node);
+        cptperson++;
+        
+        if(cptperson === 1){
+            $('#btnpersonsuppr').prop('disabled', false);
+            $('#btnpersonsuppr').prop('hidden', false);
+        }
     }
+    else{
 
+        node = document.createElement('span');
+        node.innerHTML = "<div class='form-group' id='notes" + cptnote +"'>" + "<label class='col-lg-1 control-label'>Note importante " + (cptnote+1) + "</label>" + "<div class='col-lg-10'>" + "<input type='text' class='form-control' name='notes[" + cptnote + "]' placeholder='Note importante' Required>" + "</div></div>";
+        form.parentNode.appendChild(node);
+        cptnote++;
+        
+        if(cptnote === 1){
+            $('#btnnotesuppr').prop('disabled', false);
+            $('#btnnotesuppr').prop('hidden', false);
+        }
+
+    }
 }
 
-function removeField(){
+function removeField(form){
 
+    if (form === "personne") {
+        var name = form + "" + (cptperson-1);
+        var node = document.getElementById(name);
+        node.remove();
+        cptperson--;
 
-    var name = 'personne' + (cpt-1);
-    var node = document.getElementById(name);
-    console.log(node);
-    node.remove();
-    cpt--;
+        if(cptperson === 0){
+            $('#btnpersonsuppr').attr('disabled', true);
+            $('#btnpersonsuppr').attr('hidden', true);
+        }
+    }else{
+        var name = form + "" + (cptnote-1);
+        var node = document.getElementById(name);
+        node.remove();
+        cptnote--;
 
-    if(cpt === 0){
-        $('#btnsuppr').attr('disabled', true);
-        $('#btnsuppr').attr('hidden', true);
+        if(cptnote === 0){
+            $('#btnnotesuppr').attr('disabled', true);
+            $('#btnnotesuppr').attr('hidden', true);
+        }
     }
 
 }

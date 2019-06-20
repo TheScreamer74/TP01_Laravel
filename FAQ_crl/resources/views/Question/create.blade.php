@@ -31,7 +31,17 @@
 				{!! Form::label('personnes', 'Personnes concernées:', ['class' => 'col-lg-2 control-label']) !!}
 				<div class="col-lg-8">
 					{!! Form::button('Ajouter une personne', ['onclick' => 'addField(this)', 'class' => 'btn-info btn-lg']) !!}
-					{!! Form::button('Supprimer une personne', ['onclick' => 'removeField()', 'class' => 'btn-info btn-lg', 'id' => 'btnsuppr', 'disabled', 'hidden']) !!}
+					{!! Form::button('Supprimer une personne', ['onclick' => 'removeField("personne")', 'class' => 'btn-info btn-lg', 'id' => 'btnpersonsuppr', 'disabled', 'hidden']) !!}
+				</div>
+			</div>
+
+
+						<!--Zone d'ajout des personnes concernées-->
+			<div class="form-group" id="notes">
+				{!! Form::label('notes', 'Notes importantes:', ['class' => 'col-lg-2 control-label']) !!}
+				<div class="col-lg-8">
+					{!! Form::button('Ajouter une note importante', ['onclick' => 'addField(this)', 'class' => 'btn-info btn-lg']) !!}
+					{!! Form::button('Supprimer une note importante', ['onclick' => 'removeField("notes")', 'class' => 'btn-info btn-lg', 'id' => 'btnnotesuppr', 'disabled', 'hidden']) !!}
 				</div>
 			</div>
 

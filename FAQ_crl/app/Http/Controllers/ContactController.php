@@ -11,13 +11,7 @@ class ContactController extends Controller
 {
     public function index(FormBuilder $formBuilder)
     {
-
-    	$form = $formBuilder->create(\App\Forms\ContactForm::class, [
-            'method' => 'POST',
-            'url' => route('contact.store'),
-        ]);
-
-        return view('Contact.index', compact('form'));
+        return view('Contact.index');
     }
 
     public function store(Request $request)

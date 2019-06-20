@@ -41,7 +41,7 @@
 									<div class="question col-lg-12">
 										<div class="titre">
 											<h4>{{ $key + 1 }}/ 
-											<a href="#" onclick="revertClass(this, getElementById('desc_{{ $question->	id }}'))">{{ $question->title }} ▸</a>
+											<a  href="#" onclick="revertClass(this, getElementById('desc_{{ $question->	id }}'))">{{ $question->title }} ▸</a>
 											</h4>
 										</div>
 
@@ -61,7 +61,7 @@
 										<form action="{{ route('question.destroy', $question->id) }}" method="POST">
 											{{ csrf_field() }}
 											{{ method_field('DELETE') }}
-											<input type="submit" name="" value="Supprimer" class="btn-lg btn-info" onclick="return confirm('Voulez vous vraiment supprimer cette categorie ?')">
+											<input type="submit" name="" value="Supprimer" class="btn-lg btn-info" onclick="return confirm('Voulez vous vraiment supprimer cette question ?')">
 										</form>
 
 									</div>
