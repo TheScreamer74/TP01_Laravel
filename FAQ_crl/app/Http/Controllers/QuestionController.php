@@ -49,12 +49,6 @@ class QuestionController extends Controller
     {
         //dd($request);
 
-        $length = strlen($request->description);
-        for ($i = 0; $i< $length; $i++) {
-            if($i%50 == 49){
-                $request->description = substr_replace($request->description, "\n", $i, 0);
-            }
-        }
 
         if($request->personne != null){
             $request->description = $request->description . "\n" . "\r" . "\t" ."Personne Lié au document : ". "\n" . "\r";    
@@ -133,7 +127,7 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-       // dump($request);
+       // dd($request);
       //  dump($request->category);
 
       //  dump(questions::where('id', $id)->get());

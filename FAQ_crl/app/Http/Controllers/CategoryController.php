@@ -50,17 +50,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request, FormBuilder $formBuilder)
     {
-        $form = $formBuilder->create(CategoryForm::class);
-
-        if(!$form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
-        }
 
 
         categories::create([
             'id' => ((integer)(categories::all()->count())) + 1,
             'title' => $request->title,
-            'description' => $request->descritpion
+            'description' => $request->description
         ]);
 
         flash('La categorie ' . $request->title . ' à été créée avec succès');
@@ -98,33 +93,9 @@ class CategoryController extends Controller
         //dd(categories::where('id', $question[0]->categories_id)->get());
         //dd((categories::where('id', $question[0]->categories_id)->get())[0]->title);
 
-        $form = $formBuilder->createByArray([
-            [
-                'name' => 'title',
-                'type' => Field::TEXT,
-                'value' => $category[0]->title,
-                'rules' => 'required'
-            ],
-            [
-                'name' => 'description',
-                'type' => Field::TEXTAREA,
-                'value' => $category[0]->description,
-                'rules' => 'required'
-            ],
-            [
-                'name' => 'Modifier',
-                'type' => Field::BUTTON_SUBMIT,
-                'value' => 'Modifier'
-            ]
-        ]
-        ,[
-            'method' => 'POST',
-            'url' => route('category.update', $category[0]->id)
-        ]);
 
 
-
-        return view('Category.edit', ['category' => $category, 'form' => $form]);
+        return view('Category.edit', ['category' => $category]);
 
     }
 

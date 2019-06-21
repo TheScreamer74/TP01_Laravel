@@ -5,7 +5,7 @@
 	<h2>Modifier une question</h2>
 
 	<div class="form">
-		{!! Form::open(['url' => route('question.store'), 'class'=> 'form-horizontal']) !!}
+		{!! Form::open(['url' => route('question.update', $question[0]->id), 'class'=> 'form-horizontal']) !!}
 		<fieldset>
 			<legend>Formulaire de modification de question</legend>
 
