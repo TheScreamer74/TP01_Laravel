@@ -62,7 +62,7 @@
                 height: auto;
             }
             h1{
-                padding-top: 20px;
+                padding-top: 5px;
                 padding-bottom: 12px;
             }
             .btn-info{
