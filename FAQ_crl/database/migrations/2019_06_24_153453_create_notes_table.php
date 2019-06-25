@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTableQuestionsAddPersonnesAndNotesAtributes extends Migration
+class CreateNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,11 @@ class AlterTableQuestionsAddPersonnesAndNotesAtributes extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('notes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->text('desc');
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class AlterTableQuestionsAddPersonnesAndNotesAtributes extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('notes');
     }
 }
