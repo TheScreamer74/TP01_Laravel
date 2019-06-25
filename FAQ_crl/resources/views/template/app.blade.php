@@ -78,7 +78,7 @@
                 border-color: #c7d306;   
             }
             #faq_content{
-                background-image: url("https://www.seinesaintdenishabitat.fr/sites/all/themes/theme_d7/img/bg_dots_green.png");
+                background-color: rgb(200,211,0);
                 padding-bottom: 20px;
                 border: solid 3px;
             }
