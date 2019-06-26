@@ -13,6 +13,10 @@
 
         <!-- Styles -->
         <style>
+            .flexColumn{
+                display: flex;
+                flex-direction: column;
+            }
             #faq_contact p{
                 color: #fff;
             }

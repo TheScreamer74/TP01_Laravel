@@ -22,7 +22,7 @@ function addField(form){
 
     if(form.parentNode.parentNode.id === "person"){
         node = document.createElement('span');
-        node.innerHTML = "<div class='form-group' id='personne" + cptperson +"'>" + "<label class='col-lg-1 control-label'>Personne " + (cptperson+1) + "</label>" + "<div class='col-lg-10'>" + "<input type='text' class='form-control' name='personne[" + cptperson + "]' placeholder='Nom Prénom' Required style='margin-top: 5px;'>" + "</div></div>";
+        node.innerHTML =  "<div class='form-group flexColumn' id='personne" + cptperson +"'>" + "<label class='col-lg-2'>Personne " + (cptperson+1) + " : </label>" + "<div class='col-lg-10'>" + "<label class='col-lg-1 control-label'>Nom: </label>" + "<input type='text' class='form-control' name='personne[" + cptperson + "][name] placeholder='Nom Prénom' Required style='margin-top: 5px;'>" + "</div>" + "<div class='col-lg-10'>" + "<label class='col-lg-1 control-label'>Description: </label>" + "<textarea class='form-control' name='personne[" + cptperson + "][desc] placeholder='Description' Required style='margin-top: 5px;'></textarea>" + "</div></div>";
         form.parentNode.appendChild(node);
         cptperson++;
         
@@ -34,7 +34,7 @@ function addField(form){
     else{
 
         node = document.createElement('span');
-        node.innerHTML = "<div class='form-group' id='notes" + cptnote +"'>" + "<label class='col-lg-1 control-label'>Note importante " + (cptnote+1) + "</label>" + "<div class='col-lg-10'>" + "<input type='text' class='form-control' name='notes[" + cptnote + "]' placeholder='Note importante' Required style='margin-top: 5px;'>" + "</div></div>";
+        node.innerHTML = "<div class='form-group flexColumn' id='notes" + cptnote +"'>" + "<label class='col-lg-2'>Note importante " + (cptnote+1) + " : </label>" + "<div class='col-lg-10'>" + "<label class='col-lg-1 control-label'>Titre: </label>" + "<input type='text' class='form-control' name='notes[" + cptnote + "][titre]' placeholder='Note importante' Required style='margin-top: 5px;'>" + "</div>" + "<div class='col-lg-10'>" + "<label class='col-lg-1 control-label'>Description: </label>" + "<textarea class='form-control' name='notes[" + cptnote + "][desc] placeholder='Description' Required style='margin-top: 5px;'></textarea>" + "</div></div>";
         form.parentNode.appendChild(node);
         cptnote++;
         

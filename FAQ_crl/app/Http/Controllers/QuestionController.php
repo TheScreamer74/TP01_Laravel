@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Forms\QuestionForm;
 use App\questions;
 use App\categories;
+use App\note;
+use App\person;
+use App\questions_person;
+use App\questions_notes;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\Field;
@@ -48,33 +52,51 @@ class QuestionController extends Controller
     public function store(Request $request, FormBuilder $formBuilder)
     {
         //dd($request);
-
+        $people = array();
+        $notes = array();
+        questions::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'categories_id' => (integer)$request->categories + 1
+        ]);
 
         if($request->personne != null){
-            $request->description = $request->description . "\n" . "\r" . "\t" ."Personne Lié au document : ". "\n" . "\r";    
-        
-        
-           foreach ($request->personne as $value) {
-                $request->description = $request->description . "\t" . "\t-" . $value . "\n";
+            foreach ($request->personne as $key => $value) {   
+                person::create([
+                    'name' => $value['name'],
+                    'desc' => $value['desc']
+                ]);
+                $people[$key] = person::all()->last();
+            }
+            foreach ($people as $value) {
+                questions_person::create([ 
+                    'person_id' => $value['id'],
+                    'question_id' => (integer)(questions::all()->last()->id)
+                ]);
+            }
+        }   
+
+       
+
+        if($request->notes !=null){
+            foreach ($request->notes as $key => $value) {
+               
+               note::create([
+                    'title' => $value['titre'],
+                    'desc' => $value['desc']
+               ]);
+               $notes[$key] = note::all()->last();
+            }
+            foreach ($notes as $value) {
+                questions_notes::create([
+                    'note_id' => $value['id'],
+                    'question_id' =>(integer)(questions::all()->last()->id)
+                ]);
             }
         }
 
-        if($request->notes !=null){
-            $request->description = $request->description . "\n" . "\r" . "\t" ."Notes Importantes : ". "\n" . "\r"; 
-            
-            foreach ($request->notes as $value) {
-                $request->description = $request->description . "\t" . "\t-" . $value . "\n";
-            }  
-        }
-
+            die();
         //dd($request->description);
-        
-
-      questions::create([
-        'title' => $request->title,
-        'description' => $request->description,
-        'categories_id' => (integer)$request->categories + 1
-      ]);
 
       flash('La question ' . $request->title . ' à été créée avec succès');
 
