@@ -1,19 +1,25 @@
 
 console.log('ready');
 var cptperson = 0;
-var cptnote = 0
+var cptnote = 0;
 
 
+function incrementNotes(){
+    cptnote++;
+}
+
+function incrementPeople(){
+
+    cptperson++;
+}
 
 function revertClass(cat, item){
     if(item.className == "hidden question"){
         item.className = "show question";
-        item.slideDown('slow');
         cat.innerHTML = cat.innerHTML.replace('▸', '▾');
     }
     else{
         item.className = "hidden question";
-        item.slideUp('slow');
         cat.innerHTML = cat.innerHTML.replace('▾', '▸');   
     }
 }

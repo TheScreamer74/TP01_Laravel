@@ -13,8 +13,8 @@ class CreateTableQuestionsNotes extends Migration
      */
     public function up()
     {
-        Schema::create('questions_notes', function (Blueprint $table) {
-            $table->integer('question_id');
+        Schema::create('note_questions', function (Blueprint $table) {
+            $table->integer('questions_id');
             $table->integer('note_id');
         });
     }
@@ -26,6 +26,6 @@ class CreateTableQuestionsNotes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions_notes');
+        Schema::dropIfExists('note_questions');
     }
 }

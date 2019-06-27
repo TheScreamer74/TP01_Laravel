@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class questions_person extends Model
+class person_question extends Model
 {
     public $timestamps = false;
-    public $fillable = ['question_id', 'person_id'];
+    public $fillable = ['questions_id', 'person_id'];
 }

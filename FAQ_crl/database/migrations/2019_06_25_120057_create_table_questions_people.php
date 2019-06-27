@@ -13,8 +13,8 @@ class CreateTableQuestionsPeople extends Migration
      */
     public function up()
     {
-        Schema::create('questions_people', function (Blueprint $table) {
-            $table->integer('question_id');
+        Schema::create('person_questions', function (Blueprint $table) {
+            $table->integer('questions_id');
             $table->integer('person_id');
         });
     }
@@ -26,6 +26,6 @@ class CreateTableQuestionsPeople extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions_people');
+        Schema::dropIfExists('person_questions');
     }
 }

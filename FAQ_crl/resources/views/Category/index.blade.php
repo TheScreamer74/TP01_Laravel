@@ -30,7 +30,26 @@
 								</h4>
 							</div>
 							<div class="hidden question" id="desc_{{ $question->id }}">
-								<pre>{{ $question->description }}</pre>
+								<pre>{{ $question->description }}
+
+	Notes importantes :@forelse($question->notes as $value)
+
+			{{ $value->title }}
+			{{ $value->desc }}
+
+									@empty
+										pas de notes importantes
+									@endforelse
+	
+	Personnes ratachées :@forelse($question->people as $value)
+			
+			{{ $value->name }}
+			{{ $value->desc }}
+
+									@empty
+										pas de personnes ratachées
+									@endforelse
+								</pre>
 							</div>
 							<div class="buttoncontrol">
 								<form action="{{ route('question.edit', $question->id) }}" method="POST">

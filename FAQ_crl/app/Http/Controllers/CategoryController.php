@@ -20,7 +20,7 @@ class CategoryController extends Controller
     {
 
         
-        $categories = categories::with('questions')->get();
+        $categories = categories::with(['questions', 'questions.notes', 'questions.people'])->get();
         return view('Category.index')
         ->withCategories($categories);
     }
@@ -132,6 +132,10 @@ class CategoryController extends Controller
 
 
         categories::where('id', $id)->delete();
+        $questions = questions::where('categories_id', $id)->get();
+        foreach ($questions as $key = $value) {
+            notes::where('$value
+        }
         questions::where('categories_id', $id)->delete();
         foreach(categories::where('id', '>', $id)->get() as $value){
             $value->id = $value->id - 1;

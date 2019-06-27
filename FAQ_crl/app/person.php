@@ -10,6 +10,6 @@ class person extends Model
     public $fillable = ['name', 'desc'];
     
     public function questions(){
-    	return $this->belongsTo('App\quesions');
+    	return $this->belongsToMany('App\questions');
     }
 }

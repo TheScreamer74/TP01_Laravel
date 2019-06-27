@@ -12,4 +12,12 @@ class questions extends Model
     public function categories(){
     	return $this->belongsTo('App\categories');
     }
+
+    public function people(){
+    	return $this->belongsToMany('App\person');
+    }
+
+    public function notes(){
+    	return $this->belongsToMany('App\note');
+    }
 }

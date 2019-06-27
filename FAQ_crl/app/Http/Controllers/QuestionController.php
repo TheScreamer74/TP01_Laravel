@@ -7,8 +7,8 @@ use App\questions;
 use App\categories;
 use App\note;
 use App\person;
-use App\questions_person;
-use App\questions_notes;
+use App\person_question;
+use App\note_question;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\Field;
@@ -69,9 +69,9 @@ class QuestionController extends Controller
                 $people[$key] = person::all()->last();
             }
             foreach ($people as $value) {
-                questions_person::create([ 
+                person_question::create([ 
                     'person_id' => $value['id'],
-                    'question_id' => (integer)(questions::all()->last()->id)
+                    'questions_id' => (integer)(questions::all()->last()->id)
                 ]);
             }
         }   
@@ -88,14 +88,13 @@ class QuestionController extends Controller
                $notes[$key] = note::all()->last();
             }
             foreach ($notes as $value) {
-                questions_notes::create([
+                note_question::create([
                     'note_id' => $value['id'],
-                    'question_id' =>(integer)(questions::all()->last()->id)
+                    'questions_id' =>(integer)(questions::all()->last()->id)
                 ]);
             }
         }
 
-            die();
         //dd($request->description);
 
       flash('La question ' . $request->title . ' à été créée avec succès');
@@ -124,7 +123,10 @@ class QuestionController extends Controller
     public function edit($id, FormBuilder $formBuilder)
     {
 
-        $question = questions::where('id', $id)->get();
+
+        $question = questions::where('id', $id)->with(['notes', 'people'])->get();
+
+        
 
         $array = array();
         foreach ((categories::all(['title'])->toArray()) as $cat => $title) {
@@ -149,16 +151,68 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-       // dd($request);
       //  dump($request->category);
 
       //  dump(questions::where('id', $id)->get());
+
+        
+
+        $questions = questions::where('id', $id)->with('notes')->get();
+            
+
+
+        foreach($questions[0]->notes as $note){
+            note::where('id', $note->id)->delete();
+            note_question::where('note_id', $note->id)->delete();
+        }
+
+        foreach($questions[0]->people as $person){
+            person::where('id', $person->id)->delete();
+            note_question::where('note_id', $person->id)->delete();
+        }
+        
 
         questions::where('id', $id)->update([
             'title' => $request->title,
             'description' => $request->description,
             'categories_id' => (integer)$request->category + 1,
         ]);
+
+
+        if($request->notes !=null){
+            foreach ($request->notes as $key => $value) {
+               
+               note::create([
+                    'title' => $value['titre'],
+                    'desc' => $value['desc']
+               ]);
+               $notes[$key] = note::all()->last();
+            }
+            foreach ($notes as $value) {
+                note_question::create([
+                    'note_id' => $value['id'],
+                    'questions_id' =>(integer)(questions::all()->last()->id)
+                ]);
+            }
+        }
+
+        if($request->personne != null){
+            foreach ($request->personne as $key => $value) {   
+                person::create([
+                    'name' => $value['name'],
+                    'desc' => $value['desc']
+                ]);
+                $people[$key] = person::all()->last();
+            }
+            foreach ($people as $value) {
+                person_question::create([ 
+                    'person_id' => $value['id'],
+                    'questions_id' => (integer)(questions::all()->last()->id)
+                ]);
+            }
+        }   
+
+
 
         
 

@@ -37,7 +37,7 @@
 			</div>
 
 
-						<!--Zone d'ajout des personnes concernées-->
+			<!--Zone d'ajout des notes importantes-->
 			<div class="form-group" id="notes">
 				{!! Form::label('notes', 'Notes importantes:', ['class' => 'col-lg-2 control-label']) !!}
 				<div class="col-lg-8">

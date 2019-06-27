@@ -10,6 +10,6 @@ class note extends Model
     public $fillable = ['title', 'desc'];
 
     public function questions(){
-    	return $this->belongsTo('App\quesions');
+    	return $this->belongsToMany('App\questions');
     }
 }
