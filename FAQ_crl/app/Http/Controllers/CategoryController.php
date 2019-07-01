@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Forms\CategoryForm;
 use App\categories;
 use App\questions;
+use App\note;
+use App\person;
+use App\person_question;
+use App\note_question;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\Field;
@@ -130,12 +134,13 @@ class CategoryController extends Controller
 
         $category = categories::where('id', $id)->get();
 
+        note_question::join('questions', 'note_questions.questions_id', '=', 'questions.id')->where('categories_id', $id)->delete();
+        note::join('note_questions', 'notes.id', "=", 'note_questions.note_id')->join('questions', 'note_questions.questions_id', '=', 'questions.id')->where('categories_id', $id)->delete();
+
+        person_question::join('questions', 'person_questions.questions_id', '=', 'questions.id')->where('categories_id', $id)->delete();
+        person::join('person_questions', 'people.id', '=', 'person_questions.person_id')->join('questions', 'person_questions.questions_id', '=', 'questions.id')->where('categories_id', $id)->delete();
 
         categories::where('id', $id)->delete();
-        $questions = questions::where('categories_id', $id)->get();
-        foreach ($questions as $key = $value) {
-            notes::where('$value
-        }
         questions::where('categories_id', $id)->delete();
         foreach(categories::where('id', '>', $id)->get() as $value){
             $value->id = $value->id - 1;
