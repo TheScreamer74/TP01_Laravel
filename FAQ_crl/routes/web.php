@@ -25,17 +25,17 @@
 |
 */
 
-Route::get('/ask', 'QuestionController@create')->name('question.create');
+Route::get('/ask', 'QuestionController@create')->name('question.create')->middleware('auth');
 
-Route::get('/ask/{id}', 'QuestionController@create')->name('question.create');
+Route::get('/ask/{id}', 'QuestionController@create')->name('question.create')->middleware('auth');
 
-Route::post('/ask', 'QuestionController@store')->name('question.store');
+Route::post('/ask', 'QuestionController@store')->name('question.store')->middleware('auth');
 
-Route::put('/ask/{id}', 'QuestionController@edit')->name('question.edit');
+Route::put('/ask/{id}', 'QuestionController@edit')->name('question.edit')->middleware('auth');
 
-Route::post('/ask/{id}', 'QuestionController@update')->name('question.update');
+Route::post('/ask/{id}', 'QuestionController@update')->name('question.update')->middleware('auth');
 
-Route::delete('ask/{id}', 'QuestionController@destroy')->name('question.destroy');
+Route::delete('ask/{id}', 'QuestionController@destroy')->name('question.destroy')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -49,15 +49,15 @@ Route::delete('ask/{id}', 'QuestionController@destroy')->name('question.destroy'
 |
 */
 
-Route::get('/redact', 'CategoryController@create')->name('category.create');
+Route::get('/redact', 'CategoryController@create')->name('category.create')->middleware('auth');
 
-Route::post('/redact', 'CategoryController@store')->name('category.store');
+Route::post('/redact', 'CategoryController@store')->name('category.store')->middleware('auth');
 
-Route::put('/redact/{id}', 'CategoryController@edit')->name('category.edit');
+Route::put('/redact/{id}', 'CategoryController@edit')->name('category.edit')->middleware('auth');
 
-Route::post('/redact/{id}', 'CategoryController@update')->name('category.update');
+Route::post('/redact/{id}', 'CategoryController@update')->name('category.update')->middleware('auth');
 
-Route::delete('/redact/{id}', 'CategoryController@destroy')->name('category.destroy');
+Route::delete('/redact/{id}', 'CategoryController@destroy')->name('category.destroy')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -71,9 +71,9 @@ Route::delete('/redact/{id}', 'CategoryController@destroy')->name('category.dest
 |
 */
 
-Route::get('/contact', 'ContactController@index')->name('contact.index');
+Route::get('/contact', 'ContactController@index')->name('contact.index')->middleware('auth');
 
-Route::post('/contact', 'ContactController@store')->name('contact.store');
+Route::post('/contact', 'ContactController@store')->name('contact.store')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------

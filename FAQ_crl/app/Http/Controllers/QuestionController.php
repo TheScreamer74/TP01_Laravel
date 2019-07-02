@@ -231,7 +231,8 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-       
+        note::join('note_questions', 'notes.id', '=', 'note_questions.note_id')->where('questions_id', $id)->delete();
+        person::join('person_questions', 'people.id', '=', 'person_questions.person_id')->where('questions_id', $id)->delete();
 
         $question = questions::where('id', $id)->get();
 
