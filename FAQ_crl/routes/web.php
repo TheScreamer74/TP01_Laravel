@@ -71,9 +71,9 @@ Route::delete('/redact/{id}', 'CategoryController@destroy')->name('category.dest
 |
 */
 
-Route::get('/contact', 'ContactController@index')->name('contact.index')->middleware('auth');
+Route::get('/contact', 'ContactController@index')->name('contact.index');
 
-Route::post('/contact', 'ContactController@store')->name('contact.store')->middleware('auth');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +88,8 @@ Route::post('/contact', 'ContactController@store')->name('contact.store')->middl
 */
 
 Route::get('/', 'CategoryController@index')->name('category.index');
+
+Route::get('/moderation', 'CategoryController@moderate')->name('category.moderation')->middleware('auth');
 
 
 Auth::routes(['register' => false]);

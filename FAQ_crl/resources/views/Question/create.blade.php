@@ -24,7 +24,6 @@
 				<div class="col-lg-8">
 					{!! Form::textarea('description', $value = null, ['cols' => '118', 'wrap' => 'hard', 'class' => 'form-control', 'placeholder' => 'Décrivez la démarche a suivre dans cette zone de texte', 'required']) !!}
 				</div>
-				<small>*sauter une ligne à 50 caractères</small>
 			</div>
 
 			<!--Zone d'ajout des personnes concernées-->

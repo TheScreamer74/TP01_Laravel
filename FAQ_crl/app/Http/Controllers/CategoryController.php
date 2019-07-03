@@ -29,6 +29,16 @@ class CategoryController extends Controller
         ->withCategories($categories);
     }
 
+
+    public function moderate(){
+
+        $categories = categories::with(['questions', 'questions.notes', 'questions.people'])->get();
+        return view('Category.moderation')
+        ->withCategories($categories);
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -64,7 +74,7 @@ class CategoryController extends Controller
 
         flash('La categorie ' . $request->title . ' à été créée avec succès');
 
-        return redirect()->route('category.index');
+        return redirect()->route('category.moderation');
     }
 
     /**
@@ -119,7 +129,7 @@ class CategoryController extends Controller
 
         flash("la categorie " . $request->title . " a bien été modifié");
 
-        return redirect(route('category.index'));
+        return redirect(route('category.moderation'));
     }
 
     /**
@@ -155,6 +165,6 @@ class CategoryController extends Controller
 
         flash('La categorie ' . $category[0]->title . ' à été supprimée avec succès');
 
-        return redirect(route('category.index'));
+        return redirect(route('category.moderation'));
     }
 }

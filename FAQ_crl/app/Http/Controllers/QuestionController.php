@@ -99,7 +99,7 @@ class QuestionController extends Controller
 
       flash('La question ' . $request->title . ' à été créée avec succès');
 
-      return redirect()->route('category.index');
+      return redirect()->route('category.moderation');
 
     }
 
@@ -220,7 +220,7 @@ class QuestionController extends Controller
 
         flash("L'article " . $request->title . ' a bien été modifié');
 
-        return redirect(route('category.index'));
+        return redirect(route('category.moderation'));
     }
 
     /**
@@ -240,6 +240,6 @@ class QuestionController extends Controller
 
         flash('La question ' . $question[0]->title . 'à été supprimée avec succès');
 
-        return redirect(route('category.index'));
+        return redirect(route('category.moderation'));
     }
 }

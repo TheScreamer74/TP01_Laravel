@@ -105,7 +105,33 @@
             <a id="logo" href="/" title="Accueuil" rel="home">
                 <img src="https://www.seinesaintdenishabitat.fr/sites/www.seinesaintdenishabitat.fr/files/logo_0.png">
             </a>
+            @if(Auth::check())
+                <div class="card-body pull-right" style="margin-top: 15px;">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                             {{ session('status') }}
+                         </div>
+                    @endif
+                    Vous etes connectés en tant 
+                    @if(Auth::user()->isAdmin == 0)
+                        que Moderateur
+                    @else
+                        qu'Administrateur
+                    @endif
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        {!! Form::submit('Se déconnecter', ['class' => 'btn-lg btn-info']) !!}
+                    </form>
+
+                    <form id="logout-form" action="{{ route('category.moderation') }}" method="POST">
+                        @csrf
+                        {{ method_field('GET') }}
+                        {!! Form::submit('Aller a la page de moderation', ['class' => 'btn-lg btn-info']) !!}
+                    </form>
+                </div>
+            @endif
         </div>
+
 
         @include('flash::message')
 

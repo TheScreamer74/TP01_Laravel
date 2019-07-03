@@ -31,7 +31,7 @@
 			<div class="form-group" id="description">
 				{!! Form::label('description', 'Description:', ['class' => 'col-lg-2 control-label']) !!}
 				<div class="col-lg-8">
-					{!! Form::textarea('description', $value = $question[0]->description, ['class' => 'form-control', 'placeholder' => 'Décrivez la démarche a suivre dans cette zone de texte', 'required']) !!}
+					{!! Form::textarea('description', $value = $question[0]->description, ['cols' => '118', 'wrap' => 'hard', 'class' => 'form-control', 'placeholder' => 'Décrivez la démarche a suivre dans cette zone de texte', 'required']) !!}
 				</div>
 			</div>
 
